@@ -1,0 +1,44 @@
+body {
+    padding-left: 10px;
+    background-color:rgb(114, 190, 194);
+    font-family: "Helvetica", "Verdana", sans-serif;
+}
+.title{
+    font-size:300%;
+    font-weight:bolder;
+    text-align:center;
+    padding-bottom: 5%;
+}
+/*navbar css based off w3schools guide*/
+.navbar{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(74, 128, 130);
+}
+.navbar li{
+    float: left;
+}
+.navbar li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.navbar li a:hover{
+    background-color:rgb(51, 89, 90);
+}
+
+.submitBtn {
+    font-size: 1.1em;
+    background-color: rgb(84, 144, 147);
+    text-align: center;
+    cursor: pointer;
+    border: none;
+}
+
+.submitBtn:hover{
+    filter: saturate(70%);
+}

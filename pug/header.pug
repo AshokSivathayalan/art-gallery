@@ -1,0 +1,20 @@
+div#header
+    ul(class="navbar")
+        li
+            a(href="/users") User List
+        li 
+            a(href="/artwork") Art List
+        if !session.loggedin
+            li 
+                a(href="/register") Create Account
+            li 
+                a(href="/login") Login
+        else
+            if(session.isArtist)
+                li
+                    a(href="/addart") Add Artwork
+            li  
+                a(href=`/users/${session.userID}`) Your Profile
+            li 
+                a(href="/logout") Logout
+        

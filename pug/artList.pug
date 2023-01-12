@@ -1,0 +1,34 @@
+html
+    head
+        title Art List
+        link(rel="stylesheet" href="styles/styles.css")
+    body
+        include header.pug
+        div(style="float:left;width:50%")
+            h1 List of Artwork
+            ul
+                each art in arts
+                    li 
+                        a(href=`/artwork/${art._id}`) #{art.name}
+                else 
+                    p No artwork was found.
+        div(style="float:left;width:50%")
+            h1 Search Art
+            form(action="javascript:search()")
+                label(for="name") Name: 
+                input(type="text" id="name")
+                br
+                label(for="name") Artist: 
+                input(type="text" id="artist")
+                br
+                label(for="category") Category: 
+                input(type="text" id="category")
+                br
+                label(for="medium") Medium: 
+                input(type="text" id="medium")
+                br
+                label(for="year") Year: 
+                input(type="number" id="year")
+                br
+                input(type="submit" value="Search" class="submitBtn")
+        script(src="artList.js")

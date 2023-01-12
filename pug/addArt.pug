@@ -1,0 +1,28 @@
+html
+    head
+        title Add Artwork
+        link(rel="stylesheet" href="styles/styles.css")
+    body
+        include header.pug
+        h1 Add New Artwork 
+        form(action="javascript:addArt()")
+            label(for="title") Title: 
+            input(type="text" id="title")
+            br
+            label(for="medium") Medium: 
+            input(type="text" id="medium")
+            br
+            label(for="category") Category: 
+            input(type="text" id="category")
+            br
+            label(for="year") Year: 
+            input(type="number" step="1" id="year")
+            br
+            label(for="description") Description 
+            textarea(id="description")
+            br
+            label(for="link") Link: 
+            input(type="text" id="link")
+            br
+            input(type="submit" value="Add Art!" class="submitBtn")
+        script(src="addArt.js")

@@ -1,0 +1,47 @@
+html
+    head
+        title #{art.name}
+        link(rel="stylesheet" href="../styles/styles.css")
+    body
+        include header.pug 
+        h1 #{art.name}
+        h2 By 
+            a(href=`/users/${artistID}`) #{art.artist}
+        img(src=`${art.image}` alt=`${art.title}`)
+        br
+        p Category:
+            a(href=`/artwork?category=${art.category}`) #{art.category}
+        p Medium:
+            a(href=`/artwork?medium=${art.medium}`) #{art.medium}
+        p Year:
+            a(href=`/artwork?year=${art.year}`) #{art.year}
+        p Description: #{art.description}
+        br
+        div(style="float:left;width:50%")
+            h2 Reviews
+            if art.reviews.length > 0
+                h3 Average Rating: #{average}/10 
+            -let i=0;
+            each review in reviews 
+                li 
+                    a(href=`/users/${review.user}`) #{names[i]} 
+                    | says: #{review.text} #{review.rating}/10
+                -i++
+            else 
+                p #{art.name} has not been reviewed yet.
+        div(style="float:left;width:50%")
+            if session.loggedin && session.username != art.artist
+                if hasReviewed 
+                    h2 Update your review
+                else 
+                    h2 Review this work
+                form(action=`javascript:review("${session.userID}", "${art._id}", ${hasReviewed})`)
+                    label(for="written") Write your Review: 
+                    input(type="text" id="written")
+                    br
+                    label(for="rating") Rating: 
+                    input(type="number" step="1" min="0" max="10" id="rating")
+                    br
+                    input(type="submit" value="Rate" class="submitBtn")
+        script(src="../art.js")
+

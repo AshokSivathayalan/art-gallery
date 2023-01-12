@@ -1,0 +1,17 @@
+html
+    head
+        title Registration Page
+        link(rel="stylesheet" href="styles/styles.css")
+    body
+        include header.pug
+        h1 Registration
+        form(action="javascript:register()")
+            label(for="username") Username: 
+            input(type="text" id="username")
+            br
+            label(for="password") Password: 
+            input(type="password" id="password")
+            br
+            input(type="submit" value="Register" class="submitBtn")
+        script(src="register.js")
+        

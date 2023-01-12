@@ -1,0 +1,32 @@
+html
+    head
+        title User List
+        link(rel="stylesheet" href="styles/styles.css")
+    body
+        include header.pug
+        div(style="float:left;width:50%")
+            h1 List of Users
+            ul
+                each user in users
+                    li 
+                        a(href=`/users/${user._id}`) #{user.username}
+                else 
+                    p No users were found. 
+        div(style="float:left;width:50%")
+            h1 Search Users
+            form(action="javascript:search()")
+                label(for="name") Name: 
+                input(type="text" id="name")
+                br
+                p Artist Status:
+                input(type="radio" id="artist" name="isArtist")
+                label(for="artist") Artist
+                br
+                input(type="radio" id="patron" name="isArtist")
+                label(for="patron") Patron 
+                br
+                input(type="radio" id="both" name="isArtist")
+                label(for="both") Both 
+                br
+                input(type="submit" value="Search" class="submitBtn")
+        script(src="userList.js")

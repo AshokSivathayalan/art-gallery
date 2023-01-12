@@ -1,0 +1,56 @@
+html
+    head
+        title #{user.username}
+        link(rel="stylesheet" href="../styles/styles.css")
+    body
+        include header.pug 
+        h1 #{user.username}
+        if user.isArtist 
+            h2 Artist
+        else 
+            h2 Patron
+        div(style="width:50%;float:left") 
+            if user.isArtist || wasArtist
+                h3 #{user.username}'s Artwork
+                - let i = 0;
+                each art in user.artwork 
+                    li 
+                        a(href=`/artwork/${art}`) #{artNames[i]}
+                        br
+                        -i++;
+                else
+                    p #{user.username} has not uploaded any art yet
+            h3 #{user.username}'s Reviews 
+            -let i=0;
+            each review in reviews 
+                li 
+                    a(href=`/artwork/${review.art}`) #{reviewed[i]}
+                -i++;
+            else 
+                p #{user.username} has not reviewed anything yet
+        div(style="width:50%;float:left")
+            if isCurr
+                h2 Manage Profile
+
+                form(action=`javascript:updateUser("${user._id.toString()}")`) 
+                    if user.isArtist 
+                        label( for="switch") Switch to Patron
+                    else 
+                        label(for="switch") Switch to Artist
+                    input(id="switch" type="checkbox")
+                    br
+                    input(type="submit" value="Change account type" class="submitBtn")
+                h3 Delete Reviews 
+                form(action=`javascript:deleteReviews(${JSON.stringify(user.reviews)})`)
+                    -let i=0;
+                    each review in reviews 
+                        input(type="checkbox" id=`checkbox${user.reviews[i]}`)
+                        label(for=`checkbox${user.reviews[i]}`) #{reviewed[i]}
+                        br
+                        -i++;
+                    br
+                    input(type="submit" value="Delete Reviews" class="submitBtn")
+        script(src="../user.js")
+
+        
+        
