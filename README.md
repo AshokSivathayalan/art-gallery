@@ -1,7 +1,7 @@
 # art-gallery
 
 ## About
-This application acts like a social media platform where users can create accounts and post artwork, which is then visible to other users. Users can search for various types of artwork, and review them with a rating and description. 
+This application acts like a social media platform where users can create accounts and post artwork, which is then visible to other users. Users can search for various types of artwork, and review them with a rating and description. Created as a term project for COMP 2406 @ Carleton University. 
 
 ## Installation
 1. Navigate to main directory and open command line
